@@ -9,7 +9,9 @@
       - 10250
       - 10259
       - 10257
-    kube_hosts: "{{ ansible_all_ipv4_addresses | difference([hostvars[inventory_hostname].ansible_default_ipv4.address]) }}"
+    kube_hosts:
+      - 192.168.1.31
+      - 192.168.1.4
   tasks:
     - name: Create ufw_rules map
       set_fact: 
