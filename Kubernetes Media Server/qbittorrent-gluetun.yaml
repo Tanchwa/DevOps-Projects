@@ -38,31 +38,8 @@ spec:
               value: "true"
             - name: VPN_PORT_FORWARDING
               value: "on"
-            - name: VPN_PORT_FORWARDING_UP_COMMAND
-              value: |
-                /bin/sh -c '
-                  set -e
-
-                  # Authenticate with qBittorrent
-                  wget --quiet \
-                    --save-cookies cookie \
-                    --keep-session-cookies \
-                    --header="Referer: http://localhost:8080" \
-                    --post-data="username=admin&password=$QBITTORRENTPASS" \
-                    -O- http://localhost:8080/api/v2/auth/login
-
-                  # Build JSON body safely without jq
-                  JSON="{\"listen_port\": {{PORTS}}}"
-
-                  # Send the preference update
-                  wget --quiet \
-                    --load-cookies cookie \
-                    --method=POST \
-                    --body-data="$JSON" \
-                    -O- http://localhost:8080/api/v2/app/setPreferences
-                '
-
-
+            - name: VPN_INPUT_PORTS
+              value: "32429"
             - name: TZ
               value: America/New_York
             - name: VPN_SERVICE_PROVIDER
@@ -92,6 +69,8 @@ spec:
               value: "1000"
             - name: WEBUI_PORT_ENV
               value: "8080"
+            - name: TORRENTING_PORT
+              value: "32429"
             - name: QBITTORRENTPASS
               valueFrom:
                 secretKeyRef:
