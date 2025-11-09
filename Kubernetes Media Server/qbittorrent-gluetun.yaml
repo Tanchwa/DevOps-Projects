@@ -42,6 +42,8 @@ spec:
               value: |
                 /bin/sh -c '
                   set -e
+
+                  # Authenticate with qBittorrent
                   wget --quiet \
                     --save-cookies cookie \
                     --keep-session-cookies \
@@ -49,15 +51,18 @@ spec:
                     --post-data="username=admin&password=$QBITTORRENTPASS" \
                     -O- http://localhost:8080/api/v2/auth/login
 
-                  jq -n --argjson port {{ .Values.ports }} "{listen_port: \$port}" > prefs.json
+                  # Build JSON body safely without jq
+                  JSON="{\"listen_port\": {{PORTS}}}"
 
+                  # Send the preference update
                   wget --quiet \
                     --load-cookies cookie \
                     --method=POST \
                     --header="Content-Type: application/json" \
-                    --body-file=prefs.json \
+                    --body-data="$JSON" \
                     -O- http://localhost:8080/api/v2/app/setPreferences
                 '
+
 
             - name: TZ
               value: America/New_York
