@@ -58,7 +58,6 @@ spec:
                   wget --quiet \
                     --load-cookies cookie \
                     --method=POST \
-                    --header="Content-Type: application/json" \
                     --body-data="$JSON" \
                     -O- http://localhost:8080/api/v2/app/setPreferences
                 '
