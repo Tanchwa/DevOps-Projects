@@ -38,7 +38,7 @@ spec:
               value: "true"
             - name: VPN_PORT_FORWARDING
               value: "on"
-            - name: FIREWALL_VPN_INPUT_PORTS
+            - name: VPN_PORT_FORWARDING_LISTENING_PORT
               value: "32428"
             - name: TZ
               value: America/New_York
