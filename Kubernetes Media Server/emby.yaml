@@ -44,7 +44,10 @@ spec:
               protocol: UDP
             - containerPort: 8096
             - containerPort: 8920
-          resources: {}
+          resources: 
+            limits:
+              memory: "3Gi"
+              cpu: "6"
           volumeMounts:
             - mountPath: /config
               name: emby-conf
