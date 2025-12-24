@@ -10,7 +10,7 @@ metadata:
   name: radarr
   namespace: mediaserver
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       io.kompose.service: radarr
