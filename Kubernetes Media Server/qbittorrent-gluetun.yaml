@@ -40,8 +40,6 @@ spec:
               value: "on"
             - name: VPN_PORT_FORWARDING_LISTENING_PORT
               value: "32429"
-            - name: DOT
-              value: "false"
             - name: TZ
               value: America/New_York
             - name: VPN_SERVICE_PROVIDER
