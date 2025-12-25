@@ -47,7 +47,7 @@ spec:
           resources: 
             limits:
               memory: "3Gi"
-              cpu: "6"
+              cpu: "7"
           volumeMounts:
             - mountPath: /config
               name: emby-conf
