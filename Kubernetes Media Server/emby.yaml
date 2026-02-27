@@ -47,10 +47,10 @@ spec:
           resources:
             limits:
               memory: "3Gi"
-              cpu: "7000m"
+              #cpu: "7000m"
             requests:
               memory: "2Gi"
-              cpu: "6500m"
+              #cpu: "6500m"
           volumeMounts:
             - mountPath: /config
               name: emby-conf
