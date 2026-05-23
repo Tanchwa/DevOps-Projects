@@ -79,6 +79,7 @@ spec:
                   name: qbittorrent-secret
                   key: password
           image: linuxserver/qbittorrent
+          imagePullPolicy: Always
             # securityContext:
             # privileged: true
               #            capabilities:
