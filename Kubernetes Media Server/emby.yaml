@@ -127,6 +127,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: "cloudflare-issuer"
+    cert-manager.io/revision-history-limit: "5"
   name: emby-ingress-public
   namespace: mediaserver
 spec:

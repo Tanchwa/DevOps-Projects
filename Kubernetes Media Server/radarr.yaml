@@ -99,6 +99,7 @@ kind: Ingress
 metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/revision-history-limit: "5"
     cert-manager.io/cluster-issuer: "cloudflare-issuer"
   name: radarr-ingress-private
   namespace: mediaserver
