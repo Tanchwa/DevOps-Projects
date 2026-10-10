@@ -42,24 +42,19 @@ spec:
             - mountPath: /config
               name: sonarr-conf
             - mountPath: /tv
-              name: sonarr-nfs0
+              name: media-nfs
+              subPath: TV
             - mountPath: /downloads
-              name: sonarr-nfs1
+              name: media-nfs
+              subPath: Torrents
       restartPolicy: Always
       volumes:
         - persistentVolumeClaim:
             claimName: sonarr-longhorn
           name: sonarr-conf
-        - nfs:
-            server: 172.31.0.15
-            path: /mnt/Main/kubernetes/TV
-            readOnly: false
-          name: sonarr-nfs0
-        - nfs:
-            server: 172.31.0.15
-            path: /mnt/Main/kubernetes/Torrents
-            readOnly: false
-          name: sonarr-nfs1
+        - persistentVolumeClaim:
+            claimName: media-nfs
+          name: media-nfs
 status: {}
 ---
 apiVersion: v1

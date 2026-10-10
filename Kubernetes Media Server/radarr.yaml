@@ -41,24 +41,19 @@ spec:
             - mountPath: /config
               name: radarr-conf
             - mountPath: /movies
-              name: radarr-nfs0
+              name: media-nfs
+              subPath: Movies
             - mountPath: /downloads
-              name: radarr-nfs1
+              name: media-nfs
+              subPath: Torrents
       restartPolicy: Always
       volumes:
         - persistentVolumeClaim:
             claimName: radarr-longhorn
           name: radarr-conf
-        - nfs:
-            server: 172.31.0.15
-            path: /mnt/Main/kubernetes/Movies
-            readOnly: false
-          name: radarr-nfs0
-        - nfs:
-            server: 172.31.0.15
-            path: /mnt/Main/kubernetes/Torrents
-            readOnly: false
-          name: radarr-nfs1
+        - persistentVolumeClaim:
+            claimName: media-nfs
+          name: media-nfs
 status: {}
 ---
 apiVersion: v1

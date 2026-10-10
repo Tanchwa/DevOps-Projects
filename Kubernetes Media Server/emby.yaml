@@ -55,31 +55,22 @@ spec:
             - mountPath: /config
               name: emby-conf
             - mountPath: /data/tvshows
-              name: emby-nfs0
+              name: media-nfs
+              subPath: TV
             - mountPath: /data/movies
-              name: emby-nfs1
+              name: media-nfs
+              subPath: Movies
             - mountPath: /data/XXX
-              name: emby-nfs2
+              name: media-nfs
+              subPath: XXX
       restartPolicy: Always
       volumes:
         - persistentVolumeClaim:
             claimName: emby-longhorn
           name: emby-conf
-        - nfs:
-            server: 172.31.0.15
-            readOnly: false
-            path: /mnt/Main/kubernetes/TV
-          name: emby-nfs0
-        - nfs:
-            server: 172.31.0.15
-            readOnly: false
-            path: /mnt/Main/kubernetes/Movies
-          name: emby-nfs1
-        - nfs:
-            server: 172.31.0.15
-            readOnly: false
-            path: /mnt/Main/kubernetes/XXX
-          name: emby-nfs2
+        - persistentVolumeClaim:
+            claimName: media-nfs
+          name: media-nfs
 status: {}
 ---
 apiVersion: v1

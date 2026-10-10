@@ -106,7 +106,8 @@ spec:
             - mountPath: /config
               name: qb-conf
             - mountPath: /downloads
-              name: qb-nfs0
+              name: media-nfs
+              subPath: Torrents
             - mountPath: /etc/timezone
               name: qbittorrentvpn-hostpath
               readOnly: true
@@ -115,11 +116,9 @@ spec:
         - persistentVolumeClaim:
             claimName: qb-longhorn
           name: qb-conf
-        - nfs:
-            server: 172.31.0.15
-            readOnly: false
-            path: /mnt/Main/kubernetes/Torrents
-          name: qb-nfs0
+        - persistentVolumeClaim:
+            claimName: media-nfs
+          name: media-nfs
         - persistentVolumeClaim:
             claimName: gluetun-longhorn
           name: gluetun-conf

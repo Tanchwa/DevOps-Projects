@@ -1,0 +1,38 @@
+# Shared NFS-CSI-backed storage for the whole media library, mounted once
+# per app via subPath (Torrents/Movies/TV/XXX) instead of each app getting
+# its own separate NFS mount of a single subdirectory. subPath mounts of the
+# same PVC land on the same underlying filesystem, so Sonarr/Radarr can
+# hardlink a completed download from Torrents into TV/Movies instead of
+# falling back to a slow cross-device copy+delete - which is what happened
+# before, since each app's old per-subpath nfs: volume was its own distinct
+# mount even though they all pointed at the same NFS export.
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: media-nfs
+spec:
+  storageClassName: manual # StorageClass is created by the Immich app in HomeLab-IaC
+  capacity:
+    storage: 10Ti # NFS doesn't enforce this - just needs to be >= the PVC request below
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: nfs.csi.k8s.io
+    volumeHandle: "172.31.0.15/mnt/Main/kubernetes##"
+    volumeAttributes:
+      server: "172.31.0.15"
+      share: "/mnt/Main/kubernetes"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media-nfs
+  namespace: mediaserver
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Ti
