@@ -24,9 +24,9 @@ spec:
         io.kompose.service: emby
     spec:
       securityContext:
-        #runAsUser: 1002
-        #runAsGroup: 1002
-        fsGroup: 1002
+        runAsUser: 3001
+        runAsGroup: 3001
+        fsGroup: 3001
       containers:
         - env:
             - name: GID
