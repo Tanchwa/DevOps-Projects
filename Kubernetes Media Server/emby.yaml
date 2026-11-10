@@ -24,15 +24,15 @@ spec:
         io.kompose.service: emby
     spec:
       securityContext:
-        runAsUser: 3001
-        runAsGroup: 3001
-        fsGroup: 3001
+        runAsUser: 1002
+        runAsGroup: 1002
+        fsGroup: 1002
       containers:
         - env:
             - name: GID
               value: "1002"
             - name: GIDLIST
-              value: "44"
+              value: "1002"
             - name: TZ
               value: "America/New_York"
             - name: UID
