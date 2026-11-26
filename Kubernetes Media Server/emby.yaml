@@ -78,7 +78,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: emby-longhorn
 spec:
-  storageClassName: longhorn
+  storageClassName: longhorn-v2
   accessModes:
     - ReadWriteOnce
   resources:

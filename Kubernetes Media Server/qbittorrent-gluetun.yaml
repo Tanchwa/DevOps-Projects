@@ -132,7 +132,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: gluetun-longhorn
 spec:
-  storageClassName: longhorn
+  storageClassName: longhorn-v2
   accessModes:
     - ReadWriteMany
   resources:
@@ -144,7 +144,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: qb-longhorn
 spec:
-  storageClassName: longhorn
+  storageClassName: longhorn-v2
   accessModes:
     - ReadWriteMany
   resources:
