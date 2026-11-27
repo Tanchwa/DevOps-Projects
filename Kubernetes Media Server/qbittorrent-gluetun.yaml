@@ -145,6 +145,7 @@ metadata:
   name: qb-longhorn
 spec:
   storageClassName: longhorn-v2
+  volumeName: pvc-3227d0f7-0931-48b3-a655-cf604df74cf5
   accessModes:
     - ReadWriteOnce
   resources:

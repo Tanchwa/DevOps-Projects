@@ -51,6 +51,7 @@ metadata:
   name: prowlarr-longhorn
 spec:
   storageClassName: longhorn-v2
+  volumeName: pvc-dd0fbdc4-c8d6-4d13-9c9e-b907ea596abc
   accessModes:
     - ReadWriteOnce
   resources:
