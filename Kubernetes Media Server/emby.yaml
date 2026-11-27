@@ -26,17 +26,17 @@ spec:
       securityContext:
         # runAsUser: 1002
         # runAsGroup: 1002
-        fsGroup: 1002
+        fsGroup: 3001
       containers:
         - env:
             - name: GID
-              value: "1002"
+              value: "3001"
             - name: GIDLIST
-              value: "1002"
+              value: "3001"
             - name: TZ
               value: "America/New_York"
             - name: UID
-              value: "1002"
+              value: "3001"
           image: emby/embyserver
           name: emby
           ports:
