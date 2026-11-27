@@ -134,7 +134,7 @@ metadata:
 spec:
   storageClassName: longhorn-v2
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 300Mi
@@ -146,7 +146,7 @@ metadata:
 spec:
   storageClassName: longhorn-v2
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 500Mi
