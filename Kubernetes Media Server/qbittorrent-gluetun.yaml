@@ -65,6 +65,8 @@ spec:
             - mountPath: /gluetun
               name: gluetun-conf
         - env:
+            - name: TZ
+              value: America/New_York
             - name: PUID
               value: "1000"
             - name: PGID
@@ -108,9 +110,6 @@ spec:
             - mountPath: /downloads
               name: media-nfs
               subPath: Torrents
-            - mountPath: /etc/timezone
-              name: qbittorrentvpn-hostpath
-              readOnly: true
       restartPolicy: Always
       volumes:
         - persistentVolumeClaim:
@@ -122,9 +121,6 @@ spec:
         - persistentVolumeClaim:
             claimName: gluetun-longhorn
           name: gluetun-conf
-        - hostPath:
-            path: /etc/timezone
-          name: qbittorrentvpn-hostpath
 status: {}
 ---
 apiVersion: v1
