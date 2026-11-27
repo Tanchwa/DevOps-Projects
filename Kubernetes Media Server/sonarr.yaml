@@ -63,7 +63,6 @@ metadata:
   name: sonarr-longhorn
 spec:
   storageClassName: longhorn-v2
-  volumeName: pvc-9c7526d7-c1b6-4bb6-bd0d-481d34a321a2
   accessModes:
     - ReadWriteOnce
   resources:

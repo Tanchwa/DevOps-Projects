@@ -62,7 +62,6 @@ metadata:
   name: radarr-longhorn
 spec:
   storageClassName: longhorn-v2
-  volumeName: pvc-50932724-8e8d-421c-aae3-d99e8c22d8a1
   accessModes:
     - ReadWriteOnce
   resources:

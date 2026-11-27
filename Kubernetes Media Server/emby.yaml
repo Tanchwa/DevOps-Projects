@@ -79,7 +79,6 @@ metadata:
   name: emby-longhorn
 spec:
   storageClassName: longhorn-v2
-  volumeName: pvc-fdac22d3-7aae-492d-9a29-fa3ac43c6be7
   accessModes:
     - ReadWriteOnce
   resources:
